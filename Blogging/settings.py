@@ -24,13 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6)jl2)6_*8(sumvl=+gp%8xx7ypdlld_@zk*2r-m7)%7+s+lep'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # this is website's IP address 
 # 13.233.123.232
 
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['blog.nitinsingh.online']
 
 CSRF_TRUSTED_ORIGINS = ['https://blog.nitinsingh.online']
 # Application definition
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
