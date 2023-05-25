@@ -1,0 +1,64 @@
+{% extends 'blog/base.html' %}
+{% block title %}Contact Us{% endblock title %}
+{% block body %}
+
+<style>
+    .error {
+        color: red;
+    }
+
+    .success {
+        color: green
+    }
+
+    body {
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../static/accounts//bg.jpg') no-repeat center;
+        overflow-x: hidden;
+    }
+</style>
+
+</head>
+
+
+
+
+        
+
+<div class="login-wrapper">
+    <form action={% url 'contactus' %} method="post" class="form">
+        {% csrf_token %}
+        <div class="msgs-contact">
+            {% for i in messages %}
+
+           
+           <p class={{i.tags}}>{{i}}</p>
+
+            {% endfor %}
+        </div>
+        <h2>Contact Us</h2>
+
+        <div class="input-group">
+            <input type="text" name="name" id="loginUser" required autocomplete="off"> 
+            <label for="name">Name</label>
+        </div><br>
+
+        <div class="input-group">
+            <input type="number" name="phone" id="loginUser" required autocomplete="off"> 
+            <label for="phone">Phone</label>
+        </div><br>
+
+        <div class="input-group">
+            <input type="email" name="email" id="loginUser" required autocomplete="off">
+            <label for="email">Email</label>
+        </div> <br>
+
+        <div class="input-group">
+            <input type="text" name="content" id="loginUser" required autocomplete="off">
+            <label for="content">Your Messages</label>
+        </div> <br>
+       
+
+        <input type="submit" class="submit-btn">
+    </form>
+</div>
+{% endblock body %}

@@ -1,0 +1,112 @@
+{% extends 'blog/base.html' %}
+{% block title %}Blog | Nitin-singh{% endblock title %}
+{% block body %}
+
+
+
+
+<br><br>
+<section class="blogpostarticals">
+    <div class="container">
+        <div class="box-cards-blog">
+            {% for blog in blogs %}
+            <div class="card">
+                <div class="card-image">
+                    <a href="#"><img src="/media/{{blog.featured_image}}" alt=""></a>
+                </div>
+                <div class="card-meta">
+                    <div class="card-top">
+                        <a href="/blog/category/{{blog.category}}" class="cat">
+                            <p>{{blog.category}}</p>
+                        </a>
+                        <span class="date">{{blog.date}}</span>
+                    </div>
+                    <h2 class="card-title"><a href="#">
+                            <p>{{blog.name}}</p>
+                        </a></h2>
+                    <div class="card-desc">
+                        <p>{{blog.description}}</p>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="user">
+                            <p class="author-by">by</p> &nbsp;&nbsp; <span class="username">{{blog.author}}</span>
+                        </div>
+                        <a href="/blog/{{blog.slug}}" class="readmore">
+                            Read more →
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="video-lists">
+            {% if categoryp.count > 0 %}
+            <div class="video-list">
+                <h1 class="Category">Category</h1>
+                {% for blog in categoryp %}
+                <div class="vid active">
+                    <h3 class="title"><a href="/blog/category/{{blog.name}}">{{blog.name}}</a></h3>
+                </div>
+                {% endfor %}
+            </div>
+
+            {% endif %}
+
+
+            {% comment %} <br><br><br><br>
+        <div class="center video-lists">
+            <div class="icons first">
+               <li class="social-media-icons"><a href="#"><span class="fab fa-facebook-f"></span></a></li>
+               <li class="social-media-icons"><a href="#"><span class="fab fa-twitter"></span></a></li>
+               <li class="social-media-icons"><a href="#"><span class="fab fa-instagram"></span></a></li>
+               <li class="social-media-icons"><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
+            </div>
+            <div class="icons second">
+               <li class="social-media-icons"><a href="#"><span class="fab fa-whatsapp"></span></a></li>
+               <li class="social-media-icons"><a href="#"><span class="fab fa-telegram-plane"></span></a></li>
+               <li class="social-media-icons"><a href="#"><span class="fab fa-github"></span></a></li>
+               <li class="social-media-icons"><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
+            </div>
+         </div> {% endcomment %}
+
+
+
+
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <br><br>
+    <hr class="hr-text" data-content="Featured Posts">
+    <br>
+    <div class="card-category-1">
+
+        
+        {% for blog in featured_posts %}
+        <div class="basic-card basic-card-aqua">
+            <div class="card-content">
+                <h1>{{blog.name}}</h1>
+                <img src="/media/{{blog.featured_image}}" alt="">
+                <p class="card-text">{{blog.description}}</p>
+            </div>
+
+            <div class="card-link">
+                <a href="/blog/{{blog.slug}}" class="readmore">
+                    Read more →
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+
+    
+
+
+
+    </div>
+</section>
+
+{% endblock body %}

@@ -1,0 +1,74 @@
+{% extends 'blog/base.html' %} {% block title %}{{page.name}}{% endblock title%} {% block body %}
+
+<br><br>
+<div style="display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            align-items: flex-start;
+            padding-left: 35px;">
+
+<div class="ourpagesdata">{{page.content|safe}}</div>
+<div class="video-lists" style="  background: #f7f7f7;
+                                  border-radius: 5px;">
+  {% if categoryp.count > 0 %}
+  <div class="video-list" style="background: rgb(255, 255, 255);
+                                border-radius: 5px;
+                                box-shadow: rgb(0 0 0 / 15%) 0px 5px 15px 0px;">
+
+    <h1 class="Category">Category</h1>
+    {% for blog in categoryp %}
+    <div class="vid active" style="    color: #333;
+                                        font-size: 2rem;
+                                        display: flex;
+                                        align-items: center;
+                                        border-radius: 5px;
+                                        background: #f7f7f7;
+                                        padding: 10px;
+                                        margin: 10px;
+                                        cursor: pointer;
+                                        border: 1px solid rgba(0, 0, 0, 0.1);">
+      <h3 class="title">
+        <a href="/blog/category/{{blog.name}}" style="color: #ff5e00;">{{blog.name}}</a>
+      </h3>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% endif %}
+
+  <br /><br /><br /><br />
+  <div class="center video-lists">
+    <div class="icons first">
+      <li class="social-media-icons">
+        <a href="#"><span class="fab fa-facebook-f"></span></a>
+      </li>
+      <li class="social-media-icons">
+        <a href="#"><span class="fab fa-twitter"></span></a>
+      </li>
+      <li class="social-media-icons">
+        <a href="#"><span class="fab fa-instagram"></span></a>
+      </li>
+      <li class="social-media-icons">
+        <a href="#"><span class="fab fa-linkedin-in"></span></a>
+      </li>
+    </div>
+    <div class="icons second">
+      <li class="social-media-icons">
+        <a href="#"><span class="fab fa-whatsapp"></span></a>
+      </li>
+      <li class="social-media-icons">
+        <a href="#"><span class="fab fa-telegram-plane"></span></a>
+      </li>
+      <li class="social-media-icons">
+        <a href="#"><span class="fab fa-github"></span></a>
+      </li>
+      <li class="social-media-icons">
+        <a href="#"><span class="fab fa-google-plus-g"></span></a>
+      </li>
+    </div>
+  </div>
+</div>
+</div>
+<br><br>
+
+{% endblock body %}

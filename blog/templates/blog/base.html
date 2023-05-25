@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    {% block head %}{% endblock head %}
+</head>
+<body>
+   
+
+    <!--=================================================================================================================================== header section starts ===================================================================================================================================  -->
+
+
+    
+{% if navThemeBar.logo or navThemeBar.pages or navThemeBar.righticon %}
+
+<header>
+  
+    <a href="/" class="logo"><span>{{navThemeBar.logo.name}}</span>{{navThemeBar.logo.name2}}</a> 
+
+    <nav class="navbar">
+        {% for i in navThemeBar.pages %}
+
+        <a href="{{i.menuurl}}">{{i.menuname}}</a>
+
+        {% endfor %}
+    </nav>
+
+    <div class="icons">
+        {% if navThemeBar.pages %}
+        <div id="menu-bars" class="fas fa-bars"></div>{% endif %}
+
+        {% for i in navThemeBar.righticon %}
+        <a href="{{i.iconlink}}" class="{{i.icon}}"></a>
+        {% endfor %}
+    </div>
+
+</header>
+{% endif %}
+
+
+<div class="topmargin"></div>
+
+<br>
+
+<!--=================================================================================================================================== header section starts ===================================================================================================================================  -->
+
+    {% block body %}{% endblock body %}
+
+    
+<!--=================================================================================================================================== Footer section starts ===================================================================================================================================  -->
+
+
+
+<section class="footer">
+ <hr>
+    <div class="footer-container">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>{{navThemeBar.footer.foothead.footh1.name}}</h3>
+                {% for i in navThemeBar.footer.footerlink.foot1 %}
+                <a href="{{i.url}}">{{i.name}}</a>
+                {% endfor %} 
+            </div> 
+            
+            <div class="box">
+                <h3>{{navThemeBar.footer.foothead.footh2.name}}</h3>
+                {% for i in navThemeBar.footer.footerlink.foot2 %}
+                <a href="{{i.url}}">{{i.name}}</a>
+                {% endfor %}
+                
+            </div> 
+
+            <div class="box">
+                <h3>{{navThemeBar.footer.foothead.footh3.name}}</h3>
+                {% for i in navThemeBar.footer.footerlink.foot3 %}
+                <a href="{{i.url}}">{{i.name}}</a>
+                {% endfor %}
+            </div>
+
+            
+
+            <div class="box">
+                <h3>{{navThemeBar.footer.foothead.footh4.name}}</h3>
+                {% for i in navThemeBar.footer.footerlink.foot4 %}
+                <a href="{{i.url}}">{{i.name}}</a>
+                {% endfor %}
+            </div> 
+
+        </div>
+
+        {% if navThemeBar.footer.copyrightmsg != None %}<div class="credit">{{navThemeBar.footer.copyrightmsg.msg|safe}}</div>{% endif %}
+
+    </div>
+
+</section>
+
+<!--=================================================================================================================================== footer section end here ===================================================================================================================================  -->
+
+
+
+<!--=================================================================================================================================== javascript part ===================================================================================================================================  -->
+
+
+<script>
+
+    let menu = document.querySelector('#menu-bars');
+    let navbar = document.querySelector('.navbar');
+    
+    menu.onclick = () =>{
+        navbar.classList.toggle('active');
+        menu.classList.toggle('fa-times');
+    }
+    
+    window.onscroll = () =>{
+        navbar.classList.remove('active');
+        menu.classList.remove('fa-times');
+    }
+    
+    </script>
+    <!--=================================================================================================================================== javascript part ===================================================================================================================================  -->
+</body>
+</html>

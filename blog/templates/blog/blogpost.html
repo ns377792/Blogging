@@ -1,0 +1,123 @@
+{% extends 'blog/base.html' %}
+{% block title %}Blog | Nitin-singh{% endblock title %}
+{% block body %}
+
+
+
+<h3 class="heading">{{blogp.heading}}</h3>
+<div class="blogreadmorepost">
+    <div class="main-video">
+        <div class="video">
+            {% comment %} <h3 class="title">{{blogp.name}}</h3> {% endcomment %}
+            <img src="/media/{{blogp.featured_image}}" alt=""><br><br>
+
+        </div></br></br></br></br>
+        <div class="blog-description">
+        <p>{{blogp.content|safe}}</p>
+        </div>
+
+
+        <div class="sharenow">
+            <a href="https://web.whatsapp.com/send?text={{blogp.heading}}%20|%20https://blog.nitinsingh.online/blog/{{blogp.slug}}"><i class="fab fa-whatsapp-square"></i></a>
+
+            <a href="https://www.facebook.com/sharer.php?u=https://blog.nitinsingh.online/blog/{{blogp.slug}}"><i class="fab fa-facebook-square"></i></a>
+
+            <a href="https://twitter.com/share?url=https://blog.nitinsingh.online/{{blogp.slug}}"><i class="fab fa-twitter-square"></i></a>
+      
+        </div>
+        
+
+        <div class="containersss">
+            <h2>Leave Us a Comment</h2>
+            <form action="{% url 'postComment' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="user" placeholder="Your Name" required>
+                <input type="hidden" name="slug" value="{{blogp.slug}}" required>
+                <textarea name="comment" placeholder='Add Your Comment' required></textarea>
+                <button class="commentbtn">Submit</button>
+            </form>
+            <br><br>
+
+            <div class="all-comments">
+                {% for i in comments %}
+                <div class="one-comment">
+                    <ul>
+                        <li class="fa fa-user"> &nbsp;&nbsp; {{i.user}}</li>
+                        <li>&nbsp;&nbsp; {{i.date}}</li><br>
+                        <li class="commentmsg">{{i.comment}}</li>
+                    </ul>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+
+
+
+       
+
+</div>
+
+<section>
+    <br><br>
+    <hr class="hr-text" data-content="Similar Posts">
+    <hr>
+
+    <div class="card-category-1">
+
+
+        {% for blog in blogp.similar_posts.all %}
+        <div class="basic-card basic-card-aqua">
+            <div class="card-content">
+                <h1>{{blog.name}}</h1>
+                <img src="/media/{{blog.featured_image}}" alt="">
+                <p class="card-text">{{blog.description}}</p>
+            </div>
+
+            <div class="card-link">
+                <a href="/blog/{{blog.slug}}" class="readmore">
+                    Read more →
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+
+
+    </div>
+</section>
+
+
+
+
+
+<section>
+    <br><br>
+    <hr class="hr-text" data-content="Featured Posts">
+    <hr>
+
+    <div class="card-category-1">
+
+
+        {% for blog in featured_posts %}
+        <div class="basic-card basic-card-aqua">
+            <div class="card-content">
+                <h1>{{blog.name}}</h1>
+                <img src="/media/{{blog.featured_image}}" alt="">
+                <p class="card-text">{{blog.description}}</p>
+            </div>
+
+            <div class="card-link">
+                <a href="/blog/{{blog.slug}}" class="readmore">
+                    Read more →
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+
+
+    </div>
+</section>
+
+
+
+{% endblock body %}
