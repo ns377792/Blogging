@@ -5,7 +5,7 @@
 _pycache_/
 local_settings.py
 
-staticfiles/
+static/
 
 # Backup files # 
 *.bak 
